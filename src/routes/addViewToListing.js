@@ -2,7 +2,7 @@ import { db } from "../database";
 
 export const addViewToListingRoute = {
     method: 'POST',
-    path: 'api/listings/{id}/add-view',
+    path: '/api/listings/{id}/add-view',
     handler: async (req, h) => {
         const id = req.params.id;
         await db.query(
@@ -14,5 +14,8 @@ export const addViewToListingRoute = {
             'SELECT * FROM listings WHERE id=?',
             [id]
         )
+        const updatedListint = results[0];
+        return updatedListint;
     }
+    
 }
